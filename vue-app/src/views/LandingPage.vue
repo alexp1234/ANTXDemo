@@ -3,7 +3,7 @@
        <md-toolbar class="md-theme-dark mb-4" style="padding-bottom:80px;background-color:#064263; position:relative;">
           <h1 style="color:white; opacity:0.8;font-size:30px;display:flex;justify-content:center;align-items:center;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;" class="md-title">ANTX Document Database</h1>
       </md-toolbar>
-      <div>
+      <div class="container-fluid">
            <div class="row" style="margin-top:75px;">
           <div class='col-md-5'></div>
           <div class="col-md-2">

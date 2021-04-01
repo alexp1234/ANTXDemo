@@ -13,7 +13,7 @@
 
       <md-divider class="md-inset"></md-divider>
 
-      <md-list-item id="test" @click="startNewPacket(packet)" v-for="packet in vendorPackets" :key="packet.shortName">
+      <md-list-item id="test" @click="startNewPacket(packet)" v-for="packet in vendorPackets" :key="packet.id">
          <md-avatar class="md-avatar-icon md-large" style="background-color:rgba(0,0,0,0.54);">
         <md-ripple style=" font-weight:100;">{{packet.setNumber}}</md-ripple>
       </md-avatar>
@@ -27,7 +27,7 @@
 
         </div>
         <div class="col-md-9" v-if="showDocumentPage">
-            <DocumentPage :isCreating="isCreating" @get-form-input="getFormInput" @close-form="closeForm"/>
+            <DocumentPage :isCreating="isCreating" @get-form-input="getFormInput" @close-form="closeForm" :packet="currentPacket"/>
         </div>
       </div>
        <div class="row mt-4" v-if="!showDocumentPage">
@@ -59,6 +59,7 @@ mounted(){
   axios.get("https://localhost:44368/packets")
   .then((response) => {
     this.vendorPackets = response.data;
+    console.log(this.vendorPackets)
   })
 },
 methods:{
@@ -67,9 +68,10 @@ methods:{
     this.showDocumentPage = true;
   },
   startNewPacket(item){
-    if(item){
-      this.currentPacket = item;
-     
+    if(item){     
+      this.currentPacket = item; 
+      this.$store.commit('setPacket', item)
+      console.log(item)
     }
     this.isCreating = true;
     this.showDocumentPage = true;

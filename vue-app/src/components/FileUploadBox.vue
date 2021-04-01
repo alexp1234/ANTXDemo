@@ -60,7 +60,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Name</label>
-                <md-input v-model="form.attendees[0].name" />
+                <md-input />
             </md-field>   
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Email</label>
-                <md-input v-model="form.attendees[0].email" />
+                <md-input />
             </md-field>   
         </div>
     </div>
@@ -76,7 +76,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Phone Number</label>
-                <md-input @keypress="format($event, 'one')" v-model="form.attendees[0].phoneNumber" />
+                <md-input @keypress="format($event, 'one')"  />
             </md-field>   
         </div>
     </div>
@@ -84,7 +84,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Name</label>
-                <md-input v-model="form.attendees[1].name" />
+                <md-input />
             </md-field>   
         </div>
     </div>
@@ -92,7 +92,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Email</label>
-                <md-input v-model="form.attendees[1].email" />
+                <md-input  />
             </md-field>   
         </div>
     </div>
@@ -100,7 +100,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Phone Number</label>
-                <md-input @keypress="format($event, 'two')" v-model="form.attendees[1].phoneNumber" />
+                <md-input @keypress="format($event, 'two')"  />
             </md-field>   
         </div>
     </div>
@@ -108,7 +108,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Name</label>
-                <md-input v-model="form.attendees[2].name" />
+                <md-input  />
             </md-field>   
         </div>
     </div>
@@ -116,7 +116,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Email</label>
-                <md-input v-model="form.attendees[2].email" :type="'email'" />
+                <md-input  :type="'email'" />
             </md-field>   
         </div>
     </div>
@@ -124,7 +124,7 @@
         <div class="col-md-4">
             <md-field>
                 <label>Phone Number</label>
-                <md-input @keypress="format($event, 'three')" v-model="form.attendees[2].phoneNumber"/>
+                <md-input @keypress="format($event, 'three')" />
             </md-field>   
         </div>
     </div>
@@ -132,7 +132,7 @@
         <div class="col-md-4">
     <md-field>
       <label>Notes</label>
-      <md-textarea v-model="textarea"></md-textarea>
+      <md-textarea v-model="form.notes"></md-textarea>
     </md-field>
         </div>
     </div>
@@ -154,20 +154,25 @@ export default {
             form:{
                 setNumber: "",
                 shortName: "",
+                notes: "",
                 attendees: [
-                    {name: "",
-                phoneNumber: "",           
-                email: ""}, { name: "",
-                phoneNumber: "",
-                email: ""}, {
-                name: "",
-                phoneNumber: "",
-                email: ""
-            } ]              
+            //         {name: "",
+            //     phoneNumber: "",           
+            //     email: ""}, { name: "",
+            //     phoneNumber: "",
+            //     email: ""}, {
+            //     name: "",
+            //     phoneNumber: "",
+            //     email: ""
+            // }
+             ]              
             },
             
           
         }
+    },
+    mounted(){
+        this.form = this.$store.state.packet
     },
     methods:{
         closeForm(){
