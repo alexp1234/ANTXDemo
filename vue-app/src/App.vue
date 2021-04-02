@@ -39,7 +39,7 @@ body{
     overflow-x:hidden;
 }
  .navy-item{
-   background-color: #FFFF00 !important;
+   background-color: #262626 !important;
  }
  /* NOTE original #064263 */
 </style>
