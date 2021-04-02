@@ -21,7 +21,7 @@
         <div class="col-md-3">
             <md-field>
                 <label>Short Name</label>
-                <md-input v-model="form.shortName" />
+                <md-input v-model="form.shortName"/>
             </md-field>   
         </div>
     </div>
@@ -39,7 +39,9 @@
         <div class="col-md-4">
             <md-field>
                 <label>CRADA</label>
-                <md-file />
+                <md-file @click="onPickFile('crada')" />
+                <input type="file" style="display:none;" ref="fileInput1" @change="onFilePicked"/>
+                {{cradaFile.name}}
             </md-field>   
         </div>
     </div>
@@ -47,7 +49,9 @@
         <div class="col-md-4">
             <md-field>
                 <label>52.204.26</label>
-                <md-file />
+                <md-file @click="onPickFile('fifty')"/>
+                <input type="file" style="display:none;" ref="fileInput2" @change="onFile2Picked"/>
+                {{fiftyFile.name}}
             </md-field>   
         </div>
     </div>
@@ -148,13 +152,14 @@
 
 <script>
 import axios from 'axios'
+
 export default {
     data(){
         return{
             form:{
                 setNumber: "",
                 shortName: "",
-                notes: "",
+                notes: "",           
                 attendees: [
             //         {name: "",
             //     phoneNumber: "",           
@@ -167,6 +172,10 @@ export default {
             // }
              ]              
             },
+            cradaFile: File,
+            fiftyFile: File,
+            cradaLink: "",
+            fiftyLink: ""
             
           
         }
@@ -177,6 +186,34 @@ export default {
     methods:{
         closeForm(){
             this.$emit('close-form', true);
+        },
+        onPickFile(name){
+            if(name == "crada")
+                this.$refs.fileInput1.click();
+            else if(name == "fifty")
+                this.$refs.fileInput2.click();
+        },
+        onFilePicked(event){
+            const files = event.target.files;
+            const fileReader = new FileReader();
+            fileReader.addEventListener('load', () => {
+                this.imageUrl = fileReader.result;
+            })
+            fileReader.readAsDataURL(files[0])
+            this.cradaFile = files[0]
+            console.log(this.cradaFile)
+            
+            // add in save method here
+        },
+        onFile2Picked(event){
+             const files = event.target.files;
+            const fileReader = new FileReader();
+            fileReader.addEventListener('load', () => {
+                this.imageUrl = fileReader.result;
+            })
+            fileReader.readAsDataURL(files[0])
+            this.fiftyFile = files[0]
+           
         },
         format: function($event, userNumber){
             if(userNumber === 'one'){
@@ -212,18 +249,16 @@ export default {
     
         },
         submit(){
-            var item = this.form;
-            item.setNumber = Number(this.form.setNumber)
-            console.log(item)
-            axios.post("https://localhost:44368/packets", item)
-            .then((response) => {
-                console.log(response)
-                this.$emit('get-form-input', response.data)
-            },
-            (error) => {
-                console.log(error)
-            })      
-            
+        
+        const formData = new FormData();
+        formData.append('file', this.cradaFile, this.cradaFile.name);
+        axios.post(`https://fileuploadapi20210402110244.azurewebsites.net/filetest/${this.form.setNumber}`, formData)
+        .then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        })
+        
         }
     }
 }
@@ -232,6 +267,5 @@ export default {
 <style>
     #x-mark:hover{
         cursor:pointer;
-
     }
 </style>

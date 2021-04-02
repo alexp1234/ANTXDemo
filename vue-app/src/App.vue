@@ -40,5 +40,6 @@ body{
 }
  .navy-item{
    background-color: #064263 !important;
+   /* Original Navy - #064263*/
  }
 </style>

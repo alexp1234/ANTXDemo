@@ -1,6 +1,6 @@
 <template>
   <div>
-       <md-toolbar class="md-theme-dark mb-4" style="padding-bottom:80px;background-color:#064263; position:relative;">
+       <md-toolbar class="md-theme-dark mb-4 navy-item" style="padding-bottom:80px; position:relative;">
           <h1 style="color:white; opacity:0.8;font-size:30px;display:flex;justify-content:center;align-items:center;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;" class="md-title">ANTX Document Database</h1>
       </md-toolbar>
       <div class="container-fluid">
@@ -52,7 +52,7 @@ export default {
     methods:{
         login(){
             var codeParam = this.code;
-            axios.get(`https://localhost:44368/access/${codeParam}`)
+            axios.get(`https://fileuploadapi20210402110244.azurewebsites.net/access/${codeParam}`)
             .then(() => {
                  this.$emit("show-document-page", true);
             }, (error) => {

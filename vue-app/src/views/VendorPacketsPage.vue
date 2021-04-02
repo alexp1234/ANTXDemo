@@ -56,7 +56,7 @@ components:{
     DocumentPage
 },
 mounted(){
-  axios.get("https://localhost:44368/packets")
+  axios.get("https://fileuploadapi20210402110244.azurewebsites.net/packets")
   .then((response) => {
     this.vendorPackets = response.data;
     console.log(this.vendorPackets)

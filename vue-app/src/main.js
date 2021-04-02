@@ -11,7 +11,6 @@ Vue.config.productionTip = false
 // Vue.use(MdToolbar)
 Vue.use(VueMaterial)
 
-
 // new Vue({
 //   render: h => h(App),
 // }).$mount('#app')
