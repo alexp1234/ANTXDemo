@@ -39,12 +39,7 @@ body{
     overflow-x:hidden;
 }
  .navy-item{
-<<<<<<< HEAD
-   background-color: #064263 !important;
-   /* Original Navy - #064263*/
-=======
    background-color: #262626 !important;
->>>>>>> 55156b23ff24c2613a035ae4dbaa1287f6db8f06
  }
  /* NOTE original #064263 */
 </style>

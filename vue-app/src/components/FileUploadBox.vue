@@ -45,13 +45,23 @@
             </md-field>   
         </div>
     </div>
-    <div class="row ml-2 mt-4 mb-2">
+    <div class="row ml-2 mt-4">
         <div class="col-md-4">
             <md-field>
                 <label>52.204.26</label>
                 <md-file @click="onPickFile('fifty')"/>
                 <input type="file" style="display:none;" ref="fileInput2" @change="onFile2Picked"/>
                 {{fiftyFile.name}}
+            </md-field>   
+        </div>
+    </div>
+    <div class="row ml-2 mt-4 mb-2">
+        <div class="col-md-4">
+            <md-field>
+                <label>Exercise Details</label>
+                <md-file @click="onPickFile('exercise')" />
+                <input type="file" style="display:none;" ref="fileInput3" @change="onFile3Picked"/>
+                {{exerciseFile.name}}
             </md-field>   
         </div>
     </div>
@@ -174,8 +184,10 @@ export default {
             },
             cradaFile: File,
             fiftyFile: File,
+            exerciseFile: File,
             cradaLink: "",
-            fiftyLink: ""
+            fiftyLink: "",
+            exerciseLink: ""
             
           
         }
@@ -192,6 +204,8 @@ export default {
                 this.$refs.fileInput1.click();
             else if(name == "fifty")
                 this.$refs.fileInput2.click();
+            else if(name == "exercise")
+                this.$refs.fileInput3.click();
         },
         onFilePicked(event){
             const files = event.target.files;
@@ -203,7 +217,6 @@ export default {
             this.cradaFile = files[0]
             console.log(this.cradaFile)
             
-            // add in save method here
         },
         onFile2Picked(event){
              const files = event.target.files;
@@ -213,6 +226,16 @@ export default {
             })
             fileReader.readAsDataURL(files[0])
             this.fiftyFile = files[0]
+           
+        },
+        onFile3Picked(event){
+             const files = event.target.files;
+            const fileReader = new FileReader();
+            fileReader.addEventListener('load', () => {
+                this.imageUrl = fileReader.result;
+            })
+            fileReader.readAsDataURL(files[0])
+            this.exerciseFile = files[0]
            
         },
         format: function($event, userNumber){
