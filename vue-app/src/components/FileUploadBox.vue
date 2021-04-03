@@ -55,7 +55,7 @@
             </md-field>   
         </div>
     </div>
-    <div class="row ml-2 mt-4 mb-2">
+    <!-- <div class="row ml-2 mt-4 mb-2">
         <div class="col-md-4">
             <md-field>
                 <label>Exercise Details</label>
@@ -64,7 +64,7 @@
                 {{exerciseFile.name}}
             </md-field>   
         </div>
-    </div>
+    </div> -->
     <div class="row ml-2 mt-4">
         <h2>
             Attendee Information
