@@ -23,8 +23,8 @@
         </div>
     </div>
     <div class="row mt-4 ml-2">
-        <h2>
-            Upload ANTX documents and contact information here!
+        <h2 class="col-md-4">
+            Upload ANTX documents and contact information
         </h2>     
     </div>
     <div class="row mt-4 ml-2">
