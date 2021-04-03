@@ -41,5 +41,8 @@ body{
  .navy-item{
    background-color: #262626 !important;
  }
+ .navy-text{
+   color: #262626 !important;
+ }
  /* NOTE original #064263 */
 </style>

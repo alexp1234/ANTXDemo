@@ -5,9 +5,6 @@
         <h2 class="col-md-4">
             Vendor Details
         </h2>
-        <h2 class="text-danger col-md-1 offset-md-4" id="x-mark" @click="closeForm">
-            X
-        </h2>
     </div>
     <div class="row mt-4 ml-2">
         <div class="col-md-3">
@@ -152,6 +149,9 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-2 mb-4 offset-md-4">
+            <md-button  @click="closeForm"  class="navy-text">Close</md-button>
+        </div>
+        <div class="col-md-2 mb-4">
             <md-button :type="'submit'"  style="float:right;" class="md-raised text-white navy-item">Update</md-button>
         </div>
     </div>
