@@ -274,8 +274,24 @@ export default {
         submit(){
         
         const formData = new FormData();
-        formData.append('file', this.cradaFile, this.cradaFile.name);
+        const formData2 = new FormData();
+        const formData3 = new FormData();
+        formData.append('file', this.cradaFile, this.cradaFile.name + `group-${this.form.setNumber}`);
+        formData2.append('file', this.fiftyFile, this.fiftyFile.name + `group-${this.form.setNumber}`);
+        formData3.append('file', this.exerciseFile, this.exerciseFile.name + `group-${this.form.setNumber}`);
         axios.post(`https://fileuploadapi20210402110244.azurewebsites.net/filetest/${this.form.setNumber}`, formData)
+        .then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        })
+        axios.post(`https://fileuploadapi20210402110244.azurewebsites.net/filetest/${this.form.setNumber}`, formData2)
+        .then((response) => {
+            console.log(response);
+        }, (error) => {
+            console.log(error);
+        })
+        axios.post(`https://fileuploadapi20210402110244.azurewebsites.net/filetest/${this.form.setNumber}`, formData3)
         .then((response) => {
             console.log(response);
         }, (error) => {
