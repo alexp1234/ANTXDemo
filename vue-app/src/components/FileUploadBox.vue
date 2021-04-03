@@ -148,7 +148,7 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-md-1 mb-4 offset-md-4">
+        <div class="col-md-1 mb-4 offset-md-3">
             <md-button  @click="closeForm"  class="navy-text">Close</md-button>
         </div>
         <div class="col-md-2 mb-4">
