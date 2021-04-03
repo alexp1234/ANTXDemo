@@ -148,11 +148,11 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-md-2 mb-4 offset-md-4">
+        <div class="col-md-1 mb-4 offset-md-4">
             <md-button  @click="closeForm"  class="navy-text">Close</md-button>
         </div>
         <div class="col-md-2 mb-4">
-            <md-button :type="'submit'"  style="float:right;" class="md-raised text-white navy-item">Update</md-button>
+            <md-button :type="'submit'"  class="md-raised text-white navy-item">Update</md-button>
         </div>
     </div>
 
