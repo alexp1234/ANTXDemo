@@ -13,14 +13,6 @@
           </div>
       </div>
       <form @submit.prevent="login">
-      <!-- <div class="row mt-4">
-          <div class="col-md-2 offset-md-5">
-            <md-field>
-             <label>Email Address</label>
-            <md-input v-model="email" :type="'email'"></md-input>
-             </md-field>
-          </div>
-      </div> -->
       <div class="row">
           <div class="col-md-2 offset-md-5">
              <md-field>
@@ -35,6 +27,12 @@
         </div>
     </div>
     </form>
+    <div class="vld-parent">
+                <loading :active.sync="isLoading" 
+                :can-cancel="false" 
+                
+                ></loading>
+               </div>
       </div>
      
   </div>
@@ -42,21 +40,31 @@
 
 <script>
 import axios from 'axios'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 export default {
     data(){
         return {
+            isLoading: false,
             // email: "",
             code: ""
         }
     },
+    components:{
+        Loading
+    },
     methods:{
         login(){
+            this.isLoading = true;
             var codeParam = this.code;
             axios.get(`https://fileuploadapi20210402110244.azurewebsites.net/access/${codeParam}`)
             .then(() => {
+                localStorage.setItem('IsLoggedIn', true)
                  this.$emit("show-document-page", true);
+                 this.isLoading = false;
             }, (error) => {
                 console.log(error)
+                this.isLoading = false;
             })
         }
     }

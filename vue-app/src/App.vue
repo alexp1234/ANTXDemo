@@ -31,6 +31,11 @@ export default {
       if(e)
         this.showLandingPage = false;
     }
+  },
+  mounted(){
+    if(localStorage.getItem('IsLoggedIn')){
+      this.showLandingPage = false;
+    }
   }
 }
 </script>
